@@ -17,6 +17,9 @@ tokens = (
 
     'TOPICS_B',
     'TOPICS_E',
+
+    'TOPIC_B',
+    'TOPIC_E',
 )
  
 # Regular expression rules for simple tokens
@@ -26,6 +29,8 @@ t_DATA_E = r'</data>'
 t_TOPICS_B = r'<topics>'
 t_TOPICS_E = r'</topics>'
 
+t_TOPIC_B = r'<topic>'
+t_TOPIC_E = r'</topic>'
 
 # A regular expression rule with some action code
 def t_NUMBER(t):
@@ -52,7 +57,8 @@ lexer = lex.lex()
 # Test it out
 data = ''
 with open(PATH) as file:
-     data += file.readline()
+     for line in file:
+          data += line
  
 # Give the lexer some input
 lexer.input(data)
