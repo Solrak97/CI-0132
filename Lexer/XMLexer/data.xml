@@ -1,0 +1,44 @@
+<data>
+    <topics>
+        <topic>Afganistán</topic>
+        <topic>covid19 y vacunas</topic>
+        <topic>Maneskin</topic>
+        <topic>olimpiadas</topic>
+        <topic>olimpiadas 2020</topic>
+        <topic>안창림</topic>
+        <topic>ramen</topic>
+        <topic>restricción vehicular</topic>
+        <topic>Call of Duty</topic>
+        <topic>salud</topic>
+    </topics>
+    <sites>
+        <site>
+            <url>https://www.who.int/</url>
+            <title>World Health Organization</title>
+            <topics>
+                <topic>covid19 y vacunas</topic>
+                <topic>salud</topic>
+            </topics>
+            <records>
+                <record>
+                    <initial-date>01-01-2021</initial-date>
+                    <final-date>31-01-2021</final-date>
+                    <region>United States</region>
+                    <number-of-visits>60.18</number-of-visits>
+                </record>
+                <record>
+                    <initial-date>01-02-2021</initial-date>
+                    <final-date>28-02-2021</final-date>
+                    <region>United States</region>
+                    <number-of-visits>43.76</number-of-visits>
+                </record>
+                <record>
+                    <initial-date>24-04-2021</initial-date>
+                    <final-date>13-06-2021</final-date>
+                    <region>Costa Rica</region>
+                    <number-of-visits>15.8</number-of-visits>
+                </record>
+            </records>
+        </site>
+    </sites>
+</data>
