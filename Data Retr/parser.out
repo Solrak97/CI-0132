@@ -1,0 +1,516 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> data
+Rule 1     data -> DATA_OPEN topic_collection sites_collection DATA_CLOSE
+Rule 2     sites_collection -> SITES_OPEN sites SITES_CLOSE
+Rule 3     sites -> sites site
+Rule 4     sites -> site
+Rule 5     site -> SITE_OPEN url title topic_collection record_collection SITE_CLOSE
+Rule 6     topic_collection -> TOPICS_OPEN topics TOPICS_CLOSE
+Rule 7     topics -> topics topic
+Rule 8     topics -> topic
+Rule 9     topic -> TOPIC_OPEN TEXT TOPIC_CLOSE
+Rule 10    url -> URL_OPEN URL URL_CLOSE
+Rule 11    title -> TITLE_OPEN TEXT TITLE_CLOSE
+Rule 12    record_collection -> RECORDS_OPEN records RECORDS_CLOSE
+Rule 13    records -> records record
+Rule 14    records -> record
+Rule 15    record -> RECORD_OPEN idate fdate region numvisits RECORD_CLOSE
+Rule 16    idate -> IDATE_OPEN DATE IDATE_CLOSE
+Rule 17    fdate -> FDATE_OPEN DATE FDATE_CLOSE
+Rule 18    region -> REGION_OPEN REGION REGION_CLOSE
+Rule 19    numvisits -> NUMBER_OF_VISITS_OPEN NUMBER_OF_VISITS NUMBER_OF_VISITS_CLOSE
+
+Terminals, with rules where they appear
+
+DATA_CLOSE           : 1
+DATA_OPEN            : 1
+DATE                 : 16 17
+FDATE_CLOSE          : 17
+FDATE_OPEN           : 17
+IDATE_CLOSE          : 16
+IDATE_OPEN           : 16
+NUMBER_OF_VISITS     : 19
+NUMBER_OF_VISITS_CLOSE : 19
+NUMBER_OF_VISITS_OPEN : 19
+RECORDS_CLOSE        : 12
+RECORDS_OPEN         : 12
+RECORD_CLOSE         : 15
+RECORD_OPEN          : 15
+REGION               : 18
+REGION_CLOSE         : 18
+REGION_OPEN          : 18
+SITES_CLOSE          : 2
+SITES_OPEN           : 2
+SITE_CLOSE           : 5
+SITE_OPEN            : 5
+TEXT                 : 9 11
+TITLE_CLOSE          : 11
+TITLE_OPEN           : 11
+TOPICS_CLOSE         : 6
+TOPICS_OPEN          : 6
+TOPIC_CLOSE          : 9
+TOPIC_OPEN           : 9
+URL                  : 10
+URL_CLOSE            : 10
+URL_OPEN             : 10
+error                : 
+
+Nonterminals, with rules where they appear
+
+data                 : 0
+fdate                : 15
+idate                : 15
+numvisits            : 15
+record               : 13 14
+record_collection    : 5
+records              : 12 13
+region               : 15
+site                 : 3 4
+sites                : 2 3
+sites_collection     : 1
+title                : 5
+topic                : 7 8
+topic_collection     : 1 5
+topics               : 6 7
+url                  : 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . data
+    (1) data -> . DATA_OPEN topic_collection sites_collection DATA_CLOSE
+
+    DATA_OPEN       shift and go to state 2
+
+    data                           shift and go to state 1
+
+state 1
+
+    (0) S' -> data .
+
+
+
+state 2
+
+    (1) data -> DATA_OPEN . topic_collection sites_collection DATA_CLOSE
+    (6) topic_collection -> . TOPICS_OPEN topics TOPICS_CLOSE
+
+    TOPICS_OPEN     shift and go to state 4
+
+    topic_collection               shift and go to state 3
+
+state 3
+
+    (1) data -> DATA_OPEN topic_collection . sites_collection DATA_CLOSE
+    (2) sites_collection -> . SITES_OPEN sites SITES_CLOSE
+
+    SITES_OPEN      shift and go to state 6
+
+    sites_collection               shift and go to state 5
+
+state 4
+
+    (6) topic_collection -> TOPICS_OPEN . topics TOPICS_CLOSE
+    (7) topics -> . topics topic
+    (8) topics -> . topic
+    (9) topic -> . TOPIC_OPEN TEXT TOPIC_CLOSE
+
+    TOPIC_OPEN      shift and go to state 9
+
+    topics                         shift and go to state 7
+    topic                          shift and go to state 8
+
+state 5
+
+    (1) data -> DATA_OPEN topic_collection sites_collection . DATA_CLOSE
+
+    DATA_CLOSE      shift and go to state 10
+
+
+state 6
+
+    (2) sites_collection -> SITES_OPEN . sites SITES_CLOSE
+    (3) sites -> . sites site
+    (4) sites -> . site
+    (5) site -> . SITE_OPEN url title topic_collection record_collection SITE_CLOSE
+
+    SITE_OPEN       shift and go to state 13
+
+    sites                          shift and go to state 11
+    site                           shift and go to state 12
+
+state 7
+
+    (6) topic_collection -> TOPICS_OPEN topics . TOPICS_CLOSE
+    (7) topics -> topics . topic
+    (9) topic -> . TOPIC_OPEN TEXT TOPIC_CLOSE
+
+    TOPICS_CLOSE    shift and go to state 14
+    TOPIC_OPEN      shift and go to state 9
+
+    topic                          shift and go to state 15
+
+state 8
+
+    (8) topics -> topic .
+
+    TOPICS_CLOSE    reduce using rule 8 (topics -> topic .)
+    TOPIC_OPEN      reduce using rule 8 (topics -> topic .)
+
+
+state 9
+
+    (9) topic -> TOPIC_OPEN . TEXT TOPIC_CLOSE
+
+    TEXT            shift and go to state 16
+
+
+state 10
+
+    (1) data -> DATA_OPEN topic_collection sites_collection DATA_CLOSE .
+
+    $end            reduce using rule 1 (data -> DATA_OPEN topic_collection sites_collection DATA_CLOSE .)
+
+
+state 11
+
+    (2) sites_collection -> SITES_OPEN sites . SITES_CLOSE
+    (3) sites -> sites . site
+    (5) site -> . SITE_OPEN url title topic_collection record_collection SITE_CLOSE
+
+    SITES_CLOSE     shift and go to state 17
+    SITE_OPEN       shift and go to state 13
+
+    site                           shift and go to state 18
+
+state 12
+
+    (4) sites -> site .
+
+    SITES_CLOSE     reduce using rule 4 (sites -> site .)
+    SITE_OPEN       reduce using rule 4 (sites -> site .)
+
+
+state 13
+
+    (5) site -> SITE_OPEN . url title topic_collection record_collection SITE_CLOSE
+    (10) url -> . URL_OPEN URL URL_CLOSE
+
+    URL_OPEN        shift and go to state 20
+
+    url                            shift and go to state 19
+
+state 14
+
+    (6) topic_collection -> TOPICS_OPEN topics TOPICS_CLOSE .
+
+    SITES_OPEN      reduce using rule 6 (topic_collection -> TOPICS_OPEN topics TOPICS_CLOSE .)
+    RECORDS_OPEN    reduce using rule 6 (topic_collection -> TOPICS_OPEN topics TOPICS_CLOSE .)
+
+
+state 15
+
+    (7) topics -> topics topic .
+
+    TOPICS_CLOSE    reduce using rule 7 (topics -> topics topic .)
+    TOPIC_OPEN      reduce using rule 7 (topics -> topics topic .)
+
+
+state 16
+
+    (9) topic -> TOPIC_OPEN TEXT . TOPIC_CLOSE
+
+    TOPIC_CLOSE     shift and go to state 21
+
+
+state 17
+
+    (2) sites_collection -> SITES_OPEN sites SITES_CLOSE .
+
+    DATA_CLOSE      reduce using rule 2 (sites_collection -> SITES_OPEN sites SITES_CLOSE .)
+
+
+state 18
+
+    (3) sites -> sites site .
+
+    SITES_CLOSE     reduce using rule 3 (sites -> sites site .)
+    SITE_OPEN       reduce using rule 3 (sites -> sites site .)
+
+
+state 19
+
+    (5) site -> SITE_OPEN url . title topic_collection record_collection SITE_CLOSE
+    (11) title -> . TITLE_OPEN TEXT TITLE_CLOSE
+
+    TITLE_OPEN      shift and go to state 23
+
+    title                          shift and go to state 22
+
+state 20
+
+    (10) url -> URL_OPEN . URL URL_CLOSE
+
+    URL             shift and go to state 24
+
+
+state 21
+
+    (9) topic -> TOPIC_OPEN TEXT TOPIC_CLOSE .
+
+    TOPICS_CLOSE    reduce using rule 9 (topic -> TOPIC_OPEN TEXT TOPIC_CLOSE .)
+    TOPIC_OPEN      reduce using rule 9 (topic -> TOPIC_OPEN TEXT TOPIC_CLOSE .)
+
+
+state 22
+
+    (5) site -> SITE_OPEN url title . topic_collection record_collection SITE_CLOSE
+    (6) topic_collection -> . TOPICS_OPEN topics TOPICS_CLOSE
+
+    TOPICS_OPEN     shift and go to state 4
+
+    topic_collection               shift and go to state 25
+
+state 23
+
+    (11) title -> TITLE_OPEN . TEXT TITLE_CLOSE
+
+    TEXT            shift and go to state 26
+
+
+state 24
+
+    (10) url -> URL_OPEN URL . URL_CLOSE
+
+    URL_CLOSE       shift and go to state 27
+
+
+state 25
+
+    (5) site -> SITE_OPEN url title topic_collection . record_collection SITE_CLOSE
+    (12) record_collection -> . RECORDS_OPEN records RECORDS_CLOSE
+
+    RECORDS_OPEN    shift and go to state 29
+
+    record_collection              shift and go to state 28
+
+state 26
+
+    (11) title -> TITLE_OPEN TEXT . TITLE_CLOSE
+
+    TITLE_CLOSE     shift and go to state 30
+
+
+state 27
+
+    (10) url -> URL_OPEN URL URL_CLOSE .
+
+    TITLE_OPEN      reduce using rule 10 (url -> URL_OPEN URL URL_CLOSE .)
+
+
+state 28
+
+    (5) site -> SITE_OPEN url title topic_collection record_collection . SITE_CLOSE
+
+    SITE_CLOSE      shift and go to state 31
+
+
+state 29
+
+    (12) record_collection -> RECORDS_OPEN . records RECORDS_CLOSE
+    (13) records -> . records record
+    (14) records -> . record
+    (15) record -> . RECORD_OPEN idate fdate region numvisits RECORD_CLOSE
+
+    RECORD_OPEN     shift and go to state 34
+
+    records                        shift and go to state 32
+    record                         shift and go to state 33
+
+state 30
+
+    (11) title -> TITLE_OPEN TEXT TITLE_CLOSE .
+
+    TOPICS_OPEN     reduce using rule 11 (title -> TITLE_OPEN TEXT TITLE_CLOSE .)
+
+
+state 31
+
+    (5) site -> SITE_OPEN url title topic_collection record_collection SITE_CLOSE .
+
+    SITES_CLOSE     reduce using rule 5 (site -> SITE_OPEN url title topic_collection record_collection SITE_CLOSE .)
+    SITE_OPEN       reduce using rule 5 (site -> SITE_OPEN url title topic_collection record_collection SITE_CLOSE .)
+
+
+state 32
+
+    (12) record_collection -> RECORDS_OPEN records . RECORDS_CLOSE
+    (13) records -> records . record
+    (15) record -> . RECORD_OPEN idate fdate region numvisits RECORD_CLOSE
+
+    RECORDS_CLOSE   shift and go to state 35
+    RECORD_OPEN     shift and go to state 34
+
+    record                         shift and go to state 36
+
+state 33
+
+    (14) records -> record .
+
+    RECORDS_CLOSE   reduce using rule 14 (records -> record .)
+    RECORD_OPEN     reduce using rule 14 (records -> record .)
+
+
+state 34
+
+    (15) record -> RECORD_OPEN . idate fdate region numvisits RECORD_CLOSE
+    (16) idate -> . IDATE_OPEN DATE IDATE_CLOSE
+
+    IDATE_OPEN      shift and go to state 38
+
+    idate                          shift and go to state 37
+
+state 35
+
+    (12) record_collection -> RECORDS_OPEN records RECORDS_CLOSE .
+
+    SITE_CLOSE      reduce using rule 12 (record_collection -> RECORDS_OPEN records RECORDS_CLOSE .)
+
+
+state 36
+
+    (13) records -> records record .
+
+    RECORDS_CLOSE   reduce using rule 13 (records -> records record .)
+    RECORD_OPEN     reduce using rule 13 (records -> records record .)
+
+
+state 37
+
+    (15) record -> RECORD_OPEN idate . fdate region numvisits RECORD_CLOSE
+    (17) fdate -> . FDATE_OPEN DATE FDATE_CLOSE
+
+    FDATE_OPEN      shift and go to state 40
+
+    fdate                          shift and go to state 39
+
+state 38
+
+    (16) idate -> IDATE_OPEN . DATE IDATE_CLOSE
+
+    DATE            shift and go to state 41
+
+
+state 39
+
+    (15) record -> RECORD_OPEN idate fdate . region numvisits RECORD_CLOSE
+    (18) region -> . REGION_OPEN REGION REGION_CLOSE
+
+    REGION_OPEN     shift and go to state 43
+
+    region                         shift and go to state 42
+
+state 40
+
+    (17) fdate -> FDATE_OPEN . DATE FDATE_CLOSE
+
+    DATE            shift and go to state 44
+
+
+state 41
+
+    (16) idate -> IDATE_OPEN DATE . IDATE_CLOSE
+
+    IDATE_CLOSE     shift and go to state 45
+
+
+state 42
+
+    (15) record -> RECORD_OPEN idate fdate region . numvisits RECORD_CLOSE
+    (19) numvisits -> . NUMBER_OF_VISITS_OPEN NUMBER_OF_VISITS NUMBER_OF_VISITS_CLOSE
+
+    NUMBER_OF_VISITS_OPEN shift and go to state 47
+
+    numvisits                      shift and go to state 46
+
+state 43
+
+    (18) region -> REGION_OPEN . REGION REGION_CLOSE
+
+    REGION          shift and go to state 48
+
+
+state 44
+
+    (17) fdate -> FDATE_OPEN DATE . FDATE_CLOSE
+
+    FDATE_CLOSE     shift and go to state 49
+
+
+state 45
+
+    (16) idate -> IDATE_OPEN DATE IDATE_CLOSE .
+
+    FDATE_OPEN      reduce using rule 16 (idate -> IDATE_OPEN DATE IDATE_CLOSE .)
+
+
+state 46
+
+    (15) record -> RECORD_OPEN idate fdate region numvisits . RECORD_CLOSE
+
+    RECORD_CLOSE    shift and go to state 50
+
+
+state 47
+
+    (19) numvisits -> NUMBER_OF_VISITS_OPEN . NUMBER_OF_VISITS NUMBER_OF_VISITS_CLOSE
+
+    NUMBER_OF_VISITS shift and go to state 51
+
+
+state 48
+
+    (18) region -> REGION_OPEN REGION . REGION_CLOSE
+
+    REGION_CLOSE    shift and go to state 52
+
+
+state 49
+
+    (17) fdate -> FDATE_OPEN DATE FDATE_CLOSE .
+
+    REGION_OPEN     reduce using rule 17 (fdate -> FDATE_OPEN DATE FDATE_CLOSE .)
+
+
+state 50
+
+    (15) record -> RECORD_OPEN idate fdate region numvisits RECORD_CLOSE .
+
+    RECORDS_CLOSE   reduce using rule 15 (record -> RECORD_OPEN idate fdate region numvisits RECORD_CLOSE .)
+    RECORD_OPEN     reduce using rule 15 (record -> RECORD_OPEN idate fdate region numvisits RECORD_CLOSE .)
+
+
+state 51
+
+    (19) numvisits -> NUMBER_OF_VISITS_OPEN NUMBER_OF_VISITS . NUMBER_OF_VISITS_CLOSE
+
+    NUMBER_OF_VISITS_CLOSE shift and go to state 53
+
+
+state 52
+
+    (18) region -> REGION_OPEN REGION REGION_CLOSE .
+
+    NUMBER_OF_VISITS_OPEN reduce using rule 18 (region -> REGION_OPEN REGION REGION_CLOSE .)
+
+
+state 53
+
+    (19) numvisits -> NUMBER_OF_VISITS_OPEN NUMBER_OF_VISITS NUMBER_OF_VISITS_CLOSE .
+
+    RECORD_CLOSE    reduce using rule 19 (numvisits -> NUMBER_OF_VISITS_OPEN NUMBER_OF_VISITS NUMBER_OF_VISITS_CLOSE .)
+

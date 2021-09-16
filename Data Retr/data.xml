@@ -40,5 +40,33 @@
                 </record>
             </records>
         </site>
+        <site>
+            <url>https://mv1.mediacionvirtual.ucr.ac.cr/mod/zoom/view.php?id=1314456</url>
+            <title>Mediacion Virtual</title>
+            <topics>
+                <topic>Educacion</topic>
+                <topic>UCR</topic>
+            </topics>
+            <records>
+                <record>
+                    <initial-date>01-01-2021</initial-date>
+                    <final-date>01-02-2021</final-date>
+                    <region>Costa Rica</region>
+                    <number-of-visits>60.18</number-of-visits>
+                </record>
+                <record>
+                    <initial-date>01-02-2021</initial-date>
+                    <final-date>28-02-2021</final-date>
+                    <region>United States</region>
+                    <number-of-visits>43.76</number-of-visits>
+                </record>
+                <record>
+                    <initial-date>24-04-2021</initial-date>
+                    <final-date>13-06-2021</final-date>
+                    <region>Costa Rica</region>
+                    <number-of-visits>15.8</number-of-visits>
+                </record>
+            </records>
+        </site>
     </sites>
 </data>
