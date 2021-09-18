@@ -1,36 +1,33 @@
 # ------------------------------------------------------------
-# xmlex.py
+# main.py
 #
-# tokenizer for an xml subset
+# Punto de inicio 
 # 
 # ------------------------------------------------------------
 
 
 from Parser.xmlex import lexer
-from Parser.xmlparser import parser
-
-
+from Parser.xmlparser import parser, struct_stack
+#   Carga del archivo CSV 
 PATH = 'data.xml'
-
-# Test it out
 data = ''
 with open(PATH, mode='r', encoding='utf-8') as file:
-  data = file.read()
+    data = file.read()
  
-# Give the lexer some input
+
+#   Lexing
 lexer.input(data)
- 
-# Tokenize
 while True:
-     tok = lexer.token()
-     if not tok: 
-         break      
-     print(tok)
+    tok = lexer.token()
+    if not tok: 
+        break      
+#    print(tok)
 
 
-#Reiniciamos el contador de lineas para dar con el error en parser
+#   Reset del contador
 lexer.lineno = 1
 
-#
-s = data # Using predefined data for lex
-parser.parse(s)
+
+#   Parseo
+parser.parse(data)
+
