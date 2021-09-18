@@ -28,11 +28,11 @@ class Site:
 
         for i in self.records:
             records.append(i.to_string())
-        return f'''        Site: 
-        URL:            {self.url}
-        Title:          {self.title}
-        Topics:         {topics:}
-        Records:        {records}
+        return f'''Site: 
+            URL:            {self.url}
+            Title:          {self.title}
+            Topics:         {topics:}
+            Records:        {records}
         '''
     
 class Data:
