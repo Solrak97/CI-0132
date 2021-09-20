@@ -7,25 +7,23 @@
 
 from .ply import yacc as yacc
 from .xmlex import tokens
-
 from .Structure import *
-
-struct_stack = []
 
 def item_listing(t):
     if(len(t) == 2):
         t[0] = ListWrapper()
         t[0].add_item(t[1])
-
     elif(len(t) == 3):
         t[0] = t[1].add_item(t[2])
 
-
+doc_data = {}
 
 def p_data(t):
     'data : DATA_OPEN topic_collection sites_collection DATA_CLOSE'
+    global doc_data
+    doc_data = Data(t[2].items, t[3].items)
     t[0] = Data(t[2].items, t[3].items)
-    print(t[0].to_string())    
+    pass
 
 
 def p_sites_collection(t):
